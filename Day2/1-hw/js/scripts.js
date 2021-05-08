@@ -1,53 +1,53 @@
-window.addEventListener('load', function(){
-   
-	let inp1 = document.querySelector('.inp1');
-	let inp2 = document.querySelector('.inp2');
-	let btn = document.querySelector('.go');
-	let resBox = document.querySelector('.res');
-	let oper = document.querySelector('.operation');
+window.addEventListener('load', function () {
 
-	btn.addEventListener('click', function(){
-		let num1 = parseInt(inp1.value);
-		let num2 = parseInt(inp2.value);
-		let res;
+  let inp1 = document.querySelector('.inp1');
+  let inp2 = document.querySelector('.inp2');
+  let btn = document.querySelector('.go');
+  let resBox = document.querySelector('.res');
+  let oper = document.querySelector('.operation');
 
-		switch(oper.value){
-			case 'sum':
-				res = num1 + num2;
-				break;
-			case 'sub':
-				res = num1 - num2;
-				break;
-			case 'mult':
-				res = num1 * num2;
-				break;
-			case 'div':
-				res = num1 / num2;
-				break;
-		}
+  btn.addEventListener('click', function () {
+    let num1 = parseInt(inp1.value);
+    let num2 = parseInt(inp2.value);
+    let res;
 
-		if(isNaN(res)){
-			res = 'Error';
-		}
+    switch (oper.value) {
+      case 'sum':
+        res = num1 + num2;
+        break;
+      case 'sub':
+        res = num1 - num2;
+        break;
+      case 'mult':
+        res = num1 * num2;
+        break;
+      case 'div':
+        res = num1 / num2;
+        break;
+    }
 
-		resBox.innerHTML = res;
-		btn.disabled = true;
-	});
+    if (isNaN(res)) {
+      res = 'Error';
+    }
 
-	inp1.addEventListener('input', btnEnable);
-	inp2.addEventListener('input', btnEnable);
-	oper.addEventListener('input', btnEnable);
+    resBox.innerHTML = res;
+    btn.disabled = true;
+  });
 
-	inp1.addEventListener('input', cleanInput);
-	inp2.addEventListener('input', cleanInput);
+  inp1.addEventListener('input', btnEnable);
+  inp2.addEventListener('input', btnEnable);
+  oper.addEventListener('input', btnEnable);
 
-	function cleanInput(){
-		this.value = this.value.replace(/[^0-9]/g, '');
-	}
+  inp1.addEventListener('input', cleanInput);
+  inp2.addEventListener('input', cleanInput);
 
-	function btnEnable(){
-		btn.disabled = false;
-	}
+  function cleanInput() {
+    this.value = this.value.replace(/[^0-9]/g, '');
+  }
+
+  function btnEnable() {
+    btn.disabled = false;
+  }
 });
 
 // [inp1, inp2, oper].forEach(el => el.addEventListener('input', btnEnable));
